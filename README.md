@@ -1,4 +1,14 @@
 # Projection--Carry Geometry
+## Status
+
+Research prototype v0.1.0.
+
+- Tests: 36 passed
+- Paper draft included in `paper/`
+- Reproducibility notebooks included in `notebooks/`
+- Scaling figures and tables included in `paper/figures/` and `paper/tables/`
+
+Base-\(B\) multiplication decomposes into bilinear diagonal projection followed by nonlinear carry flow. The complexity of carry is shaped by digit-support sumset geometry, while digit amplitudes and incoming carry determine the realized flow.
 
 A small Python research project for studying multiplication in a positional
 base `B` through digit geometry, anti-diagonal projection, and carry
