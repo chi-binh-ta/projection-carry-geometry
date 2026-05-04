@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "Projection--Carry Geometry of Polynomial Number Multiplication"
+authors:
+  - family-names: "Ta"
+    given-names: "Chi Binh"
+repository-code: "https://github.com/chi-binh-ta/projection-carry-geometry"
+version: "0.1.0"
+date-released: "2026-05-04"
+abstract: "A research prototype studying base-B multiplication as bilinear diagonal projection followed by nonlinear carry flow, with support-sumset geometry and empirical scaling experiments."
+keywords:
+  - polynomial multiplication
+  - carry propagation
+  - digit arithmetic
+  - additive combinatorics
+  - support-sumset geometry
+license: "MIT"
