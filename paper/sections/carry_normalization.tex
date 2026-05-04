@@ -1,0 +1,70 @@
+\section{Carry Normalization}
+
+Raw coefficients $c_k$ need not be valid base-$B$ digits. Carry normalization
+defines
+\[
+  s_k = c_k + r_k,\qquad d_k = s_k \bmod B,\qquad r_{k+1} = \left\lfloor \frac{s_k}{B} \right\rfloor,
+\]
+with $r_0=0$. The normalized result is
+\[
+  XY = \sum_k d_k B^k.
+\]
+
+This step is nonlinear because thresholding and integer division redistribute
+mass along the degree axis.
+
+\subsection{Carry as Nonlinear Mass Flow}
+
+After diagonal projection, the product is represented by a sequence of raw
+coefficients
+\[
+    c_k = \sum_{i+j=k} a_i b_j.
+\]
+These coefficients need not be valid base-\(B\) digits. We therefore define
+carry normalization by the recurrence
+\[
+    r_0 = 0,
+\]
+\[
+    s_k = c_k + r_k,
+\]
+\[
+    d_k = s_k \bmod B,
+\]
+\[
+    r_{k+1} = \left\lfloor \frac{s_k}{B} \right\rfloor.
+\]
+Here \(r_k\) is the incoming carry at degree \(k\), \(d_k\) is the normalized
+digit kept at degree \(k\), and \(r_{k+1}\) is the outgoing carry transported
+from degree \(k\) to degree \(k+1\).
+
+This interpretation views carry as a directed mass flow along the degree axis:
+\[
+    k \longrightarrow k+1.
+\]
+The mass transported across this edge is \(r_{k+1}\). Thus diagonal projection
+is a bilinear operation, while carry normalization is a nonlinear flow process.
+
+\begin{proposition}[Value preservation of carry normalization]
+Let \(c=(c_k)\) be a finite sequence of nonnegative integer raw coefficients.
+Let \(d=(d_k)\) be obtained from \(c\) by base-\(B\) carry normalization. Then
+\[
+    \sum_k c_k B^k = \sum_k d_k B^k.
+\]
+\end{proposition}
+
+\begin{proof}
+By the carry recurrence,
+\[
+    c_k + r_k = d_k + B r_{k+1}.
+\]
+Multiplying by \(B^k\), we obtain
+\[
+    c_k B^k + r_k B^k = d_k B^k + r_{k+1}B^{k+1}.
+\]
+Summing over \(k\), the carry terms telescope. Since \(r_0=0\) and the final
+carry is eventually exhausted, we get
+\[
+    \sum_k c_k B^k = \sum_k d_k B^k.
+\]
+\end{proof}

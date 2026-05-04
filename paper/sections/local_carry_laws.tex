@@ -1,0 +1,49 @@
+\section{Local Carry Laws}
+
+Carry normalization is governed by a local threshold rule. At degree \(k\), let
+\[
+    s_k = c_k + r_k,
+\]
+where \(c_k\) is the raw coefficient and \(r_k\) is the incoming carry. Then
+\[
+    d_k = s_k \bmod B,\qquad
+    r_{k+1} = \left\lfloor \frac{s_k}{B} \right\rfloor.
+\]
+
+\begin{proposition}[Local Carry Activation]
+The outgoing carry at degree \(k\) is active if and only if
+\[
+    c_k + r_k \ge B.
+\]
+\end{proposition}
+
+\begin{proof}
+By definition,
+\[
+    r_{k+1} = \left\lfloor \frac{c_k+r_k}{B} \right\rfloor.
+\]
+Since \(c_k+r_k\) is a nonnegative integer and \(B\ge 2\), the floor is
+positive exactly when \(c_k+r_k \ge B\). Thus \(r_{k+1}>0\) if and only if
+\(c_k+r_k \ge B\).
+\end{proof}
+
+\paragraph{Carry cascade length.}
+A carry cascade is a maximal consecutive block of active carry edges
+\[
+    k \to k+1.
+\]
+The cascade length is the number of active edges in such a block. The maximum
+carry cascade length records the longest uninterrupted carry propagation event.
+
+\paragraph{Value-weighted carry flow.}
+The value-weighted carry flow is
+\[
+    \operatorname{VWC}(c) = \sum_k r_{k+1} B^{k+1}.
+\]
+It measures transported carry mass in positional value units rather than raw
+edge-count units. A normalized version divides this quantity by
+\(\max(\sum_k c_k B^k,1)\).
+
+Carry is local in recurrence but global in consequence because outgoing carry
+changes the next degree. Thus \(c_k\) alone does not determine activation:
+the correct local state variable is \(s_k=c_k+r_k\).

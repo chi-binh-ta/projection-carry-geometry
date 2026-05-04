@@ -1,0 +1,56 @@
+\section{Carry Complexity}
+
+Carry complexity measures how much nonlinear normalization is required after
+the bilinear diagonal projection step. While diagonal projection aggregates
+digit interactions into raw degree masses, carry normalization transports
+excess mass along the degree axis. We quantify this transport using carry mass,
+carry depth, carry count, and carry entropy.
+
+\paragraph{Carry mass.}
+Let \(r_k\) denote the incoming carry at degree \(k\). Carry mass is the total
+positive transported carry,
+\[
+    \operatorname{Mass}(r) = \sum_{k \ge 1} r_k.
+\]
+It measures the total amount of mass moved by normalization.
+
+\paragraph{Carry count.}
+Carry count is the number of carry positions with nonzero transported mass,
+\[
+    \operatorname{Count}(r) = |\{k \ge 1 : r_k \ne 0\}|.
+\]
+It records how many degree transitions participate in carry flow.
+
+\paragraph{Carry depth.}
+Carry depth is the largest carry index with nonzero carry,
+\[
+    \operatorname{Depth}(r) = \max\{k : r_k \ne 0\},
+\]
+with value \(-1\) when no carry appears. It measures how far normalization
+propagates along the degree axis.
+
+\paragraph{Carry entropy.}
+For positive carry values, define
+\[
+    p_k = \frac{r_k}{\sum_{\ell:r_\ell>0} r_\ell}.
+\]
+Carry entropy is
+\[
+    H(r) = -\sum_{k:r_k>0} p_k \log_2 p_k.
+\]
+It distinguishes concentrated carry flow from carry flow spread across many
+degree positions.
+
+\paragraph{Diagonal mass concentration.}
+For raw coefficients \(c_k\), diagonal mass concentration is
+\[
+    \operatorname{Conc}(c) = \frac{\max_k c_k}{\sum_k c_k},
+\]
+with denominator treated as one when the total raw mass is zero. This statistic
+measures how strongly the projected bilinear mass is concentrated on a single
+degree.
+
+Together, these quantities support empirical laws connecting diagonal mass
+profiles to carry flow. A concentrated raw diagonal distribution can create
+large local excess over the base threshold, while diffuse mass may distribute
+normalization cost across several smaller carry events.

@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\newtheorem{proposition}{Proposition}
+
+\title{Projection--Carry Geometry of Polynomial Number Multiplication}
+\author{Projection--Carry Geometry Project}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We study base-\(B\) multiplication through a projection--carry decomposition.
+Given digit polynomials \(X=\sum_i a_i B^i\) and \(Y=\sum_j b_j B^j\), their
+product first forms an outer-product interaction matrix \(M_{ij}=a_i b_j\).
+The raw product coefficients are obtained by diagonal projection,
+\[
+c_k=\sum_{i+j=k}M_{ij},
+\]
+which is equivalently the pushforward of the digit-interaction field under
+\((i,j)\mapsto i+j\). These raw coefficients are then normalized by the
+base-\(B\) carry recurrence. This separates multiplication into a bilinear
+projection step and a nonlinear carry-flow step. We formalize carry as a
+directed mass flow along the degree axis, prove a local carry activation law,
+and introduce carry-complexity metrics including carry mass, carry count,
+carry entropy, cascade length, and value-weighted carry. We further connect
+carry behavior to digit-support geometry: the raw support is the sumset
+\(S_X+S_Y\), and its representation counts bound the possible diagonal mass.
+Synthetic scaling experiments show that additive energy and maximal
+representation count are associated with carry mass, while sumset size and
+support density are associated with carry count and cascade extent. The
+framework is structural rather than algorithmic, providing a geometric lens on
+polynomial number multiplication and carry propagation.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/theorem_spine}
+\input{sections/carry_normalization}
+\input{sections/local_carry_laws}
+\input{sections/support_sumset_geometry}
+\input{sections/empirical_scaling}
+\input{sections/discussion_limitations}
+\input{sections/conclusion}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

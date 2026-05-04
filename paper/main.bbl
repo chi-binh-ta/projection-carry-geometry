@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{cormen2009introduction}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock {\em Introduction to Algorithms}.
+\newblock MIT Press, 2009.
+
+\bibitem{knuth1997seminumerical}
+Donald~E. Knuth.
+\newblock {\em The Art of Computer Programming, Volume 2: Seminumerical
+  Algorithms}.
+\newblock Addison-Wesley, 1997.
+
+\bibitem{tao2006additive}
+Terence Tao and Van~H. Vu.
+\newblock {\em Additive Combinatorics}.
+\newblock Cambridge University Press, 2006.
+
+\bibitem{vzgg2013modern}
+Joachim von~zur Gathen and J{\"u}rgen Gerhard.
+\newblock {\em Modern Computer Algebra}.
+\newblock Cambridge University Press, 2013.
+
+\end{thebibliography}

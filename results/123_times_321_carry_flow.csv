@@ -1,0 +1,6 @@
+k,raw_c,incoming_carry,total_s,digit,outgoing_carry
+0,3,0,3,3,0
+1,8,0,8,8,0
+2,14,0,14,4,1
+3,8,1,9,9,0
+4,3,0,3,3,0

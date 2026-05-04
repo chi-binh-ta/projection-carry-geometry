@@ -1,0 +1,56 @@
+\section{Introduction}
+
+Multiplication is usually treated as scalar arithmetic: two integers enter and
+one integer exits. In a positional base, however, multiplication has internal
+geometry. Digits occupy degree positions, digit pairs interact across a
+two-dimensional index grid, and carry propagation moves excess mass along a
+one-dimensional degree axis. Projection--Carry Geometry makes this structure
+explicit.
+
+Fix a base \(B\ge 2\). We write nonnegative integers as digit polynomials
+\[
+    X=\sum_i a_i B^i,\qquad
+    Y=\sum_j b_j B^j,
+\]
+where \(0\le a_i,b_j<B\). The product is decomposed into three stages. First,
+the digit interaction field is the outer-product matrix
+\[
+    M_{ij}=a_i b_j.
+\]
+Second, anti-diagonal projection aggregates interactions with the same total
+degree,
+\[
+    c_k=\sum_{i+j=k}M_{ij}.
+\]
+Third, the raw coefficients \(c_k\) are converted into valid base-\(B\) digits
+by carry normalization.
+
+The main thesis is that base-\(B\) multiplication decomposes into bilinear
+diagonal projection followed by nonlinear carry flow. The projection step is
+ordinary convolution of digit polynomials. The carry step is a directed mass
+flow along the degree axis, locally activated when \(c_k+r_k\ge B\), where
+\(r_k\) is incoming carry.
+
+This viewpoint separates potential interaction geometry from realized carry
+behavior. If \(S_X=\{i:a_i\ne 0\}\) and \(S_Y=\{j:b_j\ne 0\}\), then the raw
+support before carry is the sumset \(S_X+S_Y\). The representation counts
+\[
+    \rho_{X,Y}(k)=\#\{(i,j)\in S_X\times S_Y:i+j=k\}
+\]
+measure concentration of possible interactions on anti-diagonals. We argue
+that this support-sumset geometry shapes carry complexity, while digit
+amplitudes and incoming carry determine the realized local events.
+
+The contributions are:
+\begin{itemize}
+    \item[C1.] A matrix projection formulation of positional multiplication.
+    \item[C2.] A formulation of carry as nonlinear mass flow.
+    \item[C3.] A local carry activation law.
+    \item[C4.] Support-sumset geometry and representation-count bounds for raw
+    diagonal mass.
+    \item[C5.] Carry-complexity metrics and empirical scaling experiments.
+\end{itemize}
+
+This is a structural and geometric framework, not a new fast multiplication
+algorithm. Its purpose is to expose the anatomy of multiplication and carry
+propagation, not to replace existing arithmetic algorithms.

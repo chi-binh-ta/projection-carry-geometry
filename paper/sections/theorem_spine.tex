@@ -1,0 +1,121 @@
+\section{Theorem Spine}
+
+This section collects the definitions and elementary propositions used
+throughout the paper.
+
+\paragraph{Digit polynomials.}
+For a base \(B\ge 2\), write
+\[
+    X=\sum_i a_i B^i,\qquad Y=\sum_j b_j B^j,
+\]
+where \(a_i,b_j\in\{0,1,\ldots,B-1\}\). The digit vectors are indexed from
+low degree to high degree.
+
+\paragraph{Interaction matrix.}
+The digit interaction matrix is
+\[
+    M_{ij}=a_i b_j.
+\]
+It records the pairwise contribution of digit \(a_i\) and digit \(b_j\).
+
+\paragraph{Diagonal projection.}
+The raw diagonal coefficients are
+\[
+    c_k=\sum_{i+j=k} M_{ij}.
+\]
+Equivalently, diagonal projection pushes the matrix \(M\) forward under
+\((i,j)\mapsto i+j\).
+
+\paragraph{Carry normalization.}
+Set \(r_0=0\). Carry normalization is defined by
+\[
+    s_k=c_k+r_k,\qquad
+    d_k=s_k\bmod B,\qquad
+    r_{k+1}=\left\lfloor \frac{s_k}{B}\right\rfloor.
+\]
+The output digits \(d_k\) satisfy \(0\le d_k<B\).
+
+\begin{proposition}[Projection equals convolution]
+The sequence \(c=(c_k)\) is the discrete convolution of the digit sequences
+\(a=(a_i)\) and \(b=(b_j)\).
+\end{proposition}
+
+\begin{proof}
+For every \(k\),
+\[
+    (a*b)_k=\sum_i a_i b_{k-i}=\sum_{i+j=k}a_i b_j=\sum_{i+j=k}M_{ij}=c_k.
+\]
+\end{proof}
+
+\begin{proposition}[Carry preserves value]
+If \(d\) is obtained from \(c\) by base-\(B\) carry normalization, then
+\[
+    \sum_k c_k B^k=\sum_k d_k B^k.
+\]
+\end{proposition}
+
+\begin{proof}
+The recurrence gives \(c_k+r_k=d_k+B r_{k+1}\). Multiplying by \(B^k\) and
+summing over \(k\), the carry terms telescope. Since \(r_0=0\) and the final
+carry is exhausted after finitely many positions, the two values are equal.
+\end{proof}
+
+\begin{proposition}[Local carry activation]
+Outgoing carry at degree \(k\) is active if and only if
+\[
+    c_k+r_k\ge B.
+\]
+\end{proposition}
+
+\begin{proof}
+By definition \(r_{k+1}=\lfloor(c_k+r_k)/B\rfloor\). Because \(c_k+r_k\) is a
+nonnegative integer, \(r_{k+1}>0\) exactly when \(c_k+r_k\ge B\).
+\end{proof}
+
+\paragraph{Digit support and support sumset.}
+Define
+\[
+    S_X=\{i:a_i\ne 0\},\qquad S_Y=\{j:b_j\ne 0\},
+\]
+and
+\[
+    S_X+S_Y=\{i+j:i\in S_X,\ j\in S_Y\}.
+\]
+
+\paragraph{Representation count.}
+For each degree \(k\), define
+\[
+    \rho_{X,Y}(k)=\#\{(i,j)\in S_X\times S_Y:i+j=k\}.
+\]
+
+\begin{proposition}[Raw support equals support sumset]
+For nonnegative digits,
+\[
+    \operatorname{supp}(c)=S_X+S_Y.
+\]
+\end{proposition}
+
+\begin{proof}
+If \(k\in S_X+S_Y\), some supported pair \((i,j)\) satisfies \(i+j=k\), and
+then \(a_i b_j>0\), so \(c_k>0\). Conversely, if \(c_k>0\), at least one
+summand \(a_i b_j\) with \(i+j=k\) is positive, hence \(i\in S_X\) and
+\(j\in S_Y\).
+\end{proof}
+
+\begin{proposition}[Representation-count bound]
+For every degree \(k\),
+\[
+    c_k\le (B-1)^2\rho_{X,Y}(k).
+\]
+\end{proposition}
+
+\begin{proof}
+Each nonzero digit product is at most \((B-1)^2\), and there are
+\(\rho_{X,Y}(k)\) support pairs on the anti-diagonal \(i+j=k\).
+\end{proof}
+
+\paragraph{Carry complexity metrics.}
+We summarize carry flow by carry mass, carry count, carry depth, carry entropy,
+maximum cascade length, carry amplification ratio, and value-weighted carry.
+These metrics quantify the nonlinear normalization cost after bilinear
+projection.

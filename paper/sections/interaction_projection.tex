@@ -1,0 +1,18 @@
+\section{Interaction Matrices and Diagonal Projection}
+
+Given digit vectors $a$ and $b$, define the interaction matrix
+\[
+  M_{ij} = a_i b_j.
+\]
+Each entry records one pairwise digit interaction.
+
+The raw coefficient at degree $k$ is the anti-diagonal sum
+\[
+  c_k = \sum_{i+j=k} M_{ij}.
+\]
+Equivalently, diagonal projection is the pushforward of mass under the map
+$(i,j)\mapsto i+j$. At the support level this becomes the additive sumset
+\[
+  \operatorname{supp}(a) + \operatorname{supp}(b)
+  = \{i+j : i \in \operatorname{supp}(a), j \in \operatorname{supp}(b)\}.
+\]

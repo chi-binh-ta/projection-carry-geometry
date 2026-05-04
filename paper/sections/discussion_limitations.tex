@@ -1,0 +1,28 @@
+\section{Discussion and Limitations}
+
+Projection--Carry Geometry is not a new multiplication algorithm. It is a
+structural and geometric framework for the ordinary base-\(B\) multiplication
+process. The goal is to separate bilinear projection from nonlinear carry flow
+and to make the geometry of carry propagation measurable.
+
+Support geometry controls potential mass concentration, not exact carry. The
+sumset \(S_X+S_Y\), representation counts \(\rho_{X,Y}(k)\), and additive
+energy describe where digit interactions can collide. They do not determine
+the actual raw coefficient values. Digit amplitudes determine \(c_k\), and
+incoming carry determines the realized activation condition \(c_k+r_k\ge B\).
+Thus carry is locally activated but globally propagated through the recurrence.
+
+The experiments are synthetic random digit experiments. They are useful for
+testing structural hypotheses and producing reproducible scaling tables, but
+they do not characterize every input distribution that appears in arithmetic
+software or hardware. Deterministic support families may display different
+behavior.
+
+Normalized metrics must also be interpreted carefully. Normalization by digit
+length, support size, or total interaction count can remove the scale that
+drives absolute carry mass. For this reason, normalized figures should be read
+alongside raw carry and raw support-concentration plots.
+
+Future work includes binary multiplication and bit-level circuits,
+multi-factor tensor projection, signed digits, negative coefficients, carry
+minimization, and more direct connections to additive combinatorics.

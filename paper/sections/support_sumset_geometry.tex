@@ -1,0 +1,67 @@
+\section{Support-Sumset Geometry}
+
+\paragraph{Digit support.}
+For a digit vector \(a=(a_i)\), its support is
+\[
+    S_X = \{i : a_i \ne 0\}.
+\]
+Similarly \(S_Y=\{j:b_j\ne 0\}\).
+
+\paragraph{Support sumset.}
+The support sumset is
+\[
+    S_X + S_Y = \{i+j : i\in S_X,\ j\in S_Y\}.
+\]
+It is the degree-level footprint of all possible digit interactions before
+carry normalization.
+
+\paragraph{Representation counts.}
+For each degree \(k\), define
+\[
+    \rho_{X,Y}(k) = \#\{(i,j)\in S_X\times S_Y : i+j=k\}.
+\]
+The number \(\rho_{X,Y}(k)\) is the diagonal density of the support geometry. The
+additive energy is
+\[
+    E(S_X,S_Y)=\sum_k \rho_{X,Y}(k)^2,
+\]
+which measures concentration of representation counts across anti-diagonals.
+
+\begin{proposition}[Raw support as a sumset]
+Assume the digits are nonnegative. Let
+\[
+    c_k=\sum_{i+j=k} a_i b_j.
+\]
+Then
+\[
+    \operatorname{supp}(c)=S_X+S_Y.
+\]
+\end{proposition}
+
+\begin{proof}
+If \(k\in S_X+S_Y\), then there exist \(i\in S_X\) and \(j\in S_Y\) with
+\(i+j=k\). Since digits are nonnegative and supported digits are positive,
+\(a_i b_j>0\), so \(c_k>0\). Conversely, if \(c_k>0\), at least one summand
+\(a_i b_j\) with \(i+j=k\) is positive. Hence \(i\in S_X\), \(j\in S_Y\),
+and \(k\in S_X+S_Y\).
+\end{proof}
+
+\begin{proposition}[Representation-count bound]
+For base \(B\), every raw coefficient satisfies
+\[
+    c_k \le (B-1)^2 \rho_{X,Y}(k).
+\]
+\end{proposition}
+
+\begin{proof}
+Every digit product satisfies \(a_i b_j\le (B-1)^2\). At degree \(k\), there
+are exactly \(\rho_k\) support pairs that can contribute nonzero products.
+Summing these products gives the stated bound.
+\end{proof}
+
+Carry complexity is influenced by concentration of \(\rho_{X,Y}(k)\). Large
+representation counts and high additive energy indicate many support-pair
+collisions on the same anti-diagonals, increasing the potential raw mass that
+carry normalization must absorb. The realized carry still depends on digit
+values and incoming carry, but support-sumset geometry provides a structural
+predictor for where nonlinear normalization may become active.
